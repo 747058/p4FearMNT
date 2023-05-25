@@ -22,9 +22,7 @@ public class GunSystem : MonoBehaviour
 
     //Graphics
     public GameObject muzzleFlash, bulletHoleGraphic;
-    public CamShake camShake;
-    public float camShakeMagnitude, camShakeDuration;
-    public TextMeshProUGUI text;
+
 
     private void Awake()
     {
@@ -35,8 +33,7 @@ public class GunSystem : MonoBehaviour
     {
         MyInput();
 
-        //SetText
-        text.SetText(bulletsLeft + " / " + magazineSize);
+       
     }
     private void MyInput()
     {
@@ -69,11 +66,9 @@ public class GunSystem : MonoBehaviour
             Debug.Log(rayHit.collider.name);
 
             if (rayHit.collider.CompareTag("Enemy"))
-                rayHit.collider.GetComponent<ShootingAi>().TakeDamage(damage);
+                rayHit.collider.GetComponent<EnemyAiTutorial>().TakeDamage(damage);
         }
 
-        //ShakeCamera
-        camShake.Shake(camShakeDuration, camShakeMagnitude);
 
         //Graphics
         Instantiate(bulletHoleGraphic, rayHit.point, Quaternion.Euler(0, 180, 0));
