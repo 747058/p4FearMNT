@@ -37,13 +37,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void Start()
     {
-        float mouseX = horizontalInput.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = verticalInput.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
-
-        yRotation += mouseX;
-
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f)
+     
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
